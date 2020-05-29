@@ -31,9 +31,9 @@ include 'koneksi.php'
       <div class="card-body login-card-body">
         <p class="login-box-msg">Mohon untuk memasukkan kode verifikasi dengan benar.</p>
 
-        <form action="Proses/verification" method="post">
+        <form action="Proses/verifikasi-pendaftaran" method="post">
           <div class="input-group mb-3">
-            <input type="number" name="kode" id="kode" class="form-control" placeholder="Kode" autocomplete="off">
+            <input type="number" name="kode" id="kode" class="form-control" placeholder="Kode" autocomplete="off" required="">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -42,7 +42,7 @@ include 'koneksi.php'
           </div>
           <div class="row">
             <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-block">Konfirmasi</button>
+              <input type="submit" class="btn btn-primary btn-block" name="submit" id="submit" value="Konfirmasi">
             </div>
             <!-- /.col -->
           </div>
