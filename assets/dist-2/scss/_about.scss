@@ -1,0 +1,33 @@
+/* About Area css
+============================================================================================ */
+.about_area{
+	.about_inner{
+		.col-lg-6{
+			display: flex;
+		}
+	}
+}
+.about_right_text{
+	padding-left: 68px;
+	vertical-align: middle;
+	align-self: center;
+	h4{
+		color: $dip;
+		font-size: 36px;
+		font-family: $pop;
+		font-weight: 600;
+		margin-bottom: 25px;
+	}
+	p{
+		font-size: 14px;
+		font-family: $pop;
+		line-height: 24px;
+		color: $pfont;
+		margin-bottom: 18px;
+		&:last-child{
+			margin-bottom: 0px;
+		}
+	}
+}
+/* End About Area css
+============================================================================================ */

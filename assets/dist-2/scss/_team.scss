@@ -1,0 +1,145 @@
+/* Team Area css
+============================================================================================ */
+.team_area{
+	
+}
+.team_inner{
+	
+}
+.team_item{
+	position: relative;
+	text-align: center;
+	.team_img{
+		position: relative;
+		border-radius: 5px;
+		overflow: hidden;
+		&:before{
+			content: "";
+			background-image: -moz-linear-gradient( 90deg, rgb(225,135,240) 0%, rgb(242,127,211) 33%, rgb(162,118,255) 67%, rgb(136,137,255) 100%);
+			background-image: -webkit-linear-gradient( 90deg, rgb(225,135,240) 0%, rgb(242,127,211) 33%, rgb(162,118,255) 67%, rgb(136,137,255) 100%);
+			background-image: -ms-linear-gradient( 90deg, rgb(225,135,240) 0%, rgb(242,127,211) 33%, rgb(162,118,255) 67%, rgb(136,137,255) 100%);
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			height: 100%;
+			width: 100%;
+			opacity: 0;
+			transition: all 300ms ease;
+		}
+		.hover{
+			position: absolute;
+			left: 0px;
+			width: 100%;
+			bottom: 40px;
+			text-align: center;
+			opacity: 0;
+			@include transition;
+			p{
+				max-width: 204px;
+				margin: auto;
+				color: #fff;
+				font-size: 12px;
+				line-height: 21px;
+				padding-bottom: 25px;
+				border-bottom: 1px solid #fff;
+				margin-bottom: 20px;
+			}
+			a{
+				font-size: 14px;
+				color: #fff;
+				margin-right: 20px;
+				opacity: .3;
+				&:last-child{
+					margin-right: 0px;
+				}
+				&:hover{
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.team_name{
+		text-align: center;
+		margin-top: 30px;
+		h4{
+			margin-bottom: 5px;
+			color: $dip;
+			font-family: $rob;
+			font-weight: 500;
+			font-size: 18px;
+			@include transition;
+			&:hover{
+				color: $baseColor;
+			}
+		}
+		p{
+			font-size: 14px;
+			font-family: $rob;
+			color: $pfont;
+			margin-bottom: 0px;
+		}
+	}
+	&:hover{
+		.team_img{
+			&:before{
+				opacity: .90;
+			}
+			.hover{
+				opacity: 1;
+			}
+		}
+	}
+}
+/* End Team Area css
+============================================================================================ */
+
+/* Text Member Area css
+============================================================================================ */
+.text_members_area{
+	background: #f9f9ff;
+}
+.member_slider{
+	.owl-dots{
+		text-align: center;
+		margin-top: 45px;
+		.owl-dot{
+			height: 10px;
+			width: 10px;
+			background: #eeeeee;
+			display: inline-block;
+			border-radius: 50%;
+			margin-right: 8px;
+			&:last-child{
+				margin-right: 0px;
+			}
+			&.active{
+				background: $pfont;
+			}
+		}
+	}
+}
+.member_item{
+	background: #fff;
+	border-radius: 10px;
+	padding: 55px 35px 60px 35px;
+	text-align: center;
+	p{
+		margin-bottom: 30px;
+	}
+	h4{
+		font-size: 18px;
+		color: $dip;
+		@include transition;
+		&:hover{
+			color: $baseColor;
+		}
+	}
+	h5{
+		font-size: 14px;
+		font-weight: normal;
+		color: $pfont;
+		margin-bottom: 0px;
+	}
+}
+/* End Text Members Area css
+============================================================================================ */

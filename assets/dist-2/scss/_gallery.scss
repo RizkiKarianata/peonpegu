@@ -1,0 +1,147 @@
+/* Gallery Area css
+============================================================================================ */
+.home_gallery_area{
+	
+}
+.isotope_fillter{
+	margin-bottom: 50px;
+	.gallery_filter{
+		text-align: center;
+		li{
+			display: inline-block;
+			margin-right: 45px;
+			&:last-child{
+				margin-right: 0px;
+			}
+			a{
+				font-size: 13px;
+				font-family: $rob;
+				color: $pfont;
+				@include transition;
+			}
+			&:hover, &.active{
+				a{
+					color: $baseColor;
+				}
+			}
+		}
+	}
+}
+.gallery_f_inner{
+	margin-bottom: -45px;
+}
+.h_gallery_item{
+	display: inline-block;
+	margin-bottom: 45px;
+	.g_img_item{
+		position: relative;
+		text-align: center;
+		overflow: hidden;
+		border-radius: 5px;
+		&:before{
+			content: "";
+			width: 100%;
+			height: 100%;
+			left: 0px;
+			top: 0px;
+			background-image: -moz-linear-gradient( 90deg, rgb(225,135,240) 0%, rgb(242,127,211) 33%, rgb(162,118,255) 67%, rgb(136,137,255) 100%);
+			background-image: -webkit-linear-gradient( 90deg, rgb(225,135,240) 0%, rgb(242,127,211) 33%, rgb(162,118,255) 67%, rgb(136,137,255) 100%);
+			background-image: -ms-linear-gradient( 90deg, rgb(225,135,240) 0%, rgb(242,127,211) 33%, rgb(162,118,255) 67%, rgb(136,137,255) 100%);
+			position: absolute;
+			opacity: 0;
+			transition: all 300ms ease;
+		}
+		.light{
+			position: absolute;
+			left: 0px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+			text-align: center;
+			opacity: 0;
+		}
+	}
+	.g_item_text{
+		text-align: center;
+		h4{
+			color: $dip;
+			font-size: 18px;
+			margin-top: 22px;
+			@include transition;
+		}
+		p{
+			margin-bottom: 0px;
+		}
+	}
+	&:hover{
+		.g_img_item{
+			&:before{
+				opacity: 1;
+			}
+			.light{
+				opacity: 1;
+			}
+		}
+		.g_item_text{
+			h4{
+				&:hover{
+					color: $baseColor;
+				}
+			}	
+		}
+	}
+}
+/* End Gallery Area css
+============================================================================================ */
+
+/* Portfolio Details Area css
+============================================================================================ */
+.portfolio_details_area{
+	
+}
+.portfolio_details_inner{
+	.row{
+		margin-bottom: 65px;
+	}
+	p{
+		margin-bottom: 30px;
+		&:last-child{
+			margin-bottom: 0px;
+		}
+	}
+	.portfolio_right_text{
+		padding-left: 98px;
+		h4{
+			color: $dip;
+			font-size: 24px;
+			margin-bottom: 18px;
+		}
+		p{
+			margin-bottom: 25px;	
+		}
+		.list{
+			li{
+				margin-bottom: 7px;
+				span{
+					font-size: 14px;
+					color: $dip;
+					font-weight: 500;
+					width: 97px;
+					display: inline-block;
+				}
+				color: $pfont;
+				font-weight: normal;
+				font-size: 14px;
+				&:last-child{
+					margin-bottom: 0px;
+				}
+				i{
+					color: #f1cd09;
+				}
+			}
+		}
+	}
+}
+
+/* End Portfolio Details Area css
+============================================================================================ */
