@@ -117,7 +117,7 @@ $row2 = mysqli_fetch_array($query2);
                                         <input type="number" id="jumlah_pesan" name="jumlah_pesan" placeholder="Jumlah Pesan" min="1" max="<?php echo $row2['stok'];?>" required="" class="single-input" autocomplete="off">
                                     </div>
                                     <div class="mt-10">
-                                        <input type="number" id="total_harga" name="total_harga" placeholder="Total Harga"  required class="single-input" autocomplete="off">
+                                        <input type="number" id="total_harga" name="total_harga" placeholder="Total Harga"  required class="single-input" autocomplete="off" readonly="">
                                     </div><br>
                                     <input type="submit" class="genric-btn info circle" name="submit" id="submit" value="Kirim">
                                 </div>

@@ -150,7 +150,7 @@ $data = mysqli_fetch_array($sql);
                     </div>
                     <div class="comment-form">
                         <h4>Komentar Berita</h4>
-                        <form action="Proses/komentar" method="POST">
+                        <form action="Proses/add-komentar" method="POST">
                             <div class="form-group form-inline">
                               <div class="form-group col-lg-6 col-md-6 name">
                                 <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" readonly="" value="<?php echo $data['nama_lengkap'];?>">
