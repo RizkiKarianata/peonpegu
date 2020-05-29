@@ -2,12 +2,16 @@
 include '../koneksi.php';
 include 'Proses/function-time.php';
 $id = $_GET['id'];
+$id_user = $_COOKIE["version"];
 
 $query = mysqli_query($conn, "SELECT * FROM tb_berita WHERE id_berita = '$id'");
 $row = mysqli_fetch_array($query);
 
 $query2 = mysqli_query($conn, "SELECT COUNT(id_komentar) AS komentar FROM tb_komentar WHERE id_berita = '$id'");
 $row2 = mysqli_fetch_array($query2);
+
+$sql = mysqli_query($conn, "SELECT * FROM tb_user WHERE id_user = '$id_user'");
+$data = mysqli_fetch_array($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,23 +149,25 @@ $row2 = mysqli_fetch_array($query2);
                         <?php } ?>                                            				
                     </div>
                     <div class="comment-form">
-                        <h4>Leave a Reply</h4>
-                        <form>
+                        <h4>Komentar Berita</h4>
+                        <form action="Proses/komentar" method="POST">
                             <div class="form-group form-inline">
                               <div class="form-group col-lg-6 col-md-6 name">
-                                <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                                <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" readonly="" value="<?php echo $data['nama_lengkap'];?>">
                             </div>
                             <div class="form-group col-lg-6 col-md-6 email">
-                                <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-                            </div>										
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Alamat Email" readonly="" value="<?php echo $data['email'];?>">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                            <input type="date" class="form-control" id="tanggal" placeholder="Tanggal" readonly="" value="<?php echo date('Y-m-d')?>">
+                            <input type="hidden" name="id_berita" id="id_berita" value="<?php echo $id;?>">
+                            <input type="hidden" name="id_user" id="id_user" value="<?php echo $id_user;?>">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                            <textarea class="form-control mb-10" rows="5" name="isi" id="isi" placeholder="Tuliskan Komentar" required=""></textarea>
                         </div>
-                        <a href="#" class="primary-btn submit_btn">Post Comment</a>	
+                        <input type="submit" class="primary-btn submit_btn" name="submit" id="submit" value="Kirim Komentar">
                     </form>
                 </div>
             </div>
@@ -198,7 +204,7 @@ $row2 = mysqli_fetch_array($query2);
                             <div class="media post_item">
                                 <img src="../assets/images/berita/<?php echo $row2['gambar'];?>" alt="post" style="width: 40%;">
                                 <div class="media-body">
-                                    <a href="detail-berita?id=<?php echo $row['id_berita'];?>"><h3><?php echo $row2['judul'];?></h3></a>
+                                    <a href="detail-berita?id=<?php echo $row2['id_berita'];?>"><h3><?php echo $row2['judul'];?></h3></a>
                                     <p><?php echo waktu_lalu($row2['created']);?></p>
                                 </div>
                             </div>

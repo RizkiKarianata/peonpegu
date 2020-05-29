@@ -1,6 +1,8 @@
 <?php
 include '../koneksi.php';
 include 'Proses/function-time.php';
+$sql = mysqli_query($conn, "SELECT * FROM tb_berita ORDER BY rand() LIMIT 1");
+$data = mysqli_fetch_array($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +79,7 @@ include 'Proses/function-time.php';
                 <div class="blog_b_text text-center">
                     <h2>Dapatkan Berita Terbaru <br /> di Peonpegu</h2>
                     <p>Peonpegu menyediakan berita terbaru setiap saat serta bermanfaat.</p>
-                    <a class="white_bg_btn" href="detail-berita?">Berita Acak</a>
+                    <a class="white_bg_btn" href="detail-berita?id=<?php echo $data['id_berita'];?>">Berita Acak</a>
                 </div>
             </div>
         </div>
@@ -191,7 +193,7 @@ include 'Proses/function-time.php';
                                 <div class="media post_item">
                                     <img src="../assets/images/berita/<?php echo $row2['gambar'];?>" alt="post" style="width: 40%;">
                                     <div class="media-body">
-                                        <a href="detail-berita?id=<?php echo $row['id_berita'];?>"><h3><?php echo $row2['judul'];?></h3></a>
+                                        <a href="detail-berita?id=<?php echo $row2['id_berita'];?>"><h3><?php echo $row2['judul'];?></h3></a>
                                         <p><?php echo waktu_lalu($row2['created']);?></p>
                                     </div>
                                 </div>
