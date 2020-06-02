@@ -21,9 +21,10 @@
 	$no_hp = $_POST['no_hp'];
 	$created = date("Y-m-d H:i:s");
 	$modified = date("Y-m-d H:i:s");
+	$status = '0';
 
 	$cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username'"));
-	$cek2 = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_user WHERE no_hp = '$no_hp'"));
+	$cek2 = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_user WHERE no_hp = '$no_hp' AND status = '1'"));
 
 	$password_acak = password_hash($password_confirmation, PASSWORD_DEFAULT);
 
@@ -64,66 +65,56 @@
 		});
 		</script>";
 	}else {
-		// $curl = curl_init();
-		// curl_setopt_array($curl, array(
-		// 	CURLOPT_URL => "https://api.thebigbox.id/sms-otp/1.0.0/otp/coImQLSevlqil9bsAKsGZzn3bqZFCe9q",
-		// 	CURLOPT_RETURNTRANSFER => true,
-		// 	CURLOPT_ENCODING => "",
-		// 	CURLOPT_MAXREDIRS => 10,
-		// 	CURLOPT_TIMEOUT => 30,
-		// 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		// 	CURLOPT_CUSTOMREQUEST => "PUT",
-		// 	CURLOPT_POSTFIELDS => "{\n  \"maxAttempt\" : \"1\",\n  \"phoneNum\" : \"$no_hp\",\n  \"expireIn\" : \"300\",\n  \"digit\" : \"5\"\n\n}",
-		// 	CURLOPT_HTTPHEADER => array(
-		// 		"content-type: application/json",
-		// 		"x-api-key: coImQLSevlqil9bsAKsGZzn3bqZFCe9q"
-		// 	),
-		// ));
-		// $response = curl_exec($curl);
-		// $err = curl_error($curl);
-		// $response2 = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-		// curl_close($curl);
-		// if ($response2 == 200) {
-		$query = "INSERT INTO tb_user(nama_lengkap, username, password, no_hp, created, modified) VALUES ('$nama_lengkap', '$username', '$password_acak', '$no_hp', '$created', '$modified')";
-		$exe = mysqli_query($conn, $query);
-		if($exe) {
-			// setcookie('kodeotp', $status, time() + (60 * 60 * 5), '/');
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => "https://api.thebigbox.id/sms-otp/1.0.0/otp/cxxYAnfTepRbvbnuxphgCrE8lFDqI4MG",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "PUT",
+			CURLOPT_POSTFIELDS => "{\n  \"maxAttempt\" : \"3\",\n  \"phoneNum\" : \"$no_hp\",\n  \"expireIn\" : \"300\",\n  \"digit\" : \"5\"\n\n}",
+			CURLOPT_HTTPHEADER => array(
+				"content-type: application/json",
+				"x-api-key: cxxYAnfTepRbvbnuxphgCrE8lFDqI4MG"
+			),
+		));
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+		$response2 = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+		curl_close($curl);
+		if ($response2 == 200) {
+			$query = "INSERT INTO tb_user(nama_lengkap, username, password, no_hp, created, modified, status) VALUES ('$nama_lengkap', '$username', '$password_acak', '$no_hp', '$created', '$modified', '$status')";
+			$exe = mysqli_query($conn, $query);
+			if($exe) {
+				setcookie('telepon', $no_hp, time() + (60 * 60 * 24 * 5), '/');
+				echo "<script>
+				Swal.fire({
+					allowEnterKey: false,
+					allowOutsideClick: false,
+					icon: 'success',
+					title: 'Pemberitahuan',
+					text: 'Kode verifikasi berhasil terkirim ke nomor' + ' $no_hp'
+				}).then(function() {
+					window.location.href='../verifikasi-pendaftaran'
+				});
+				</script>";
+			}
+		}else {
 			echo "<script>
 			Swal.fire({
 				allowEnterKey: false,
 				allowOutsideClick: false,
-				icon: 'success',
-				title: 'Pemberitahuan',
-				text: 'Berhasil melakukan pendaftaran'
+				icon: 'error',
+				title: 'Peringatan',
+				text: 'Gagal melakukan pendaftaran'
 			}).then(function() {
-				window.location.href='../halaman-masuk'
+				window.location.href='../halaman-daftar';
 			});
-			</script>";
-		}else {
-		echo "<script>
-		Swal.fire({
-			allowEnterKey: false,
-			allowOutsideClick: false,
-			icon: 'error',
-			title: 'Peringatan',
-			text: 'Gagal melakukan pendaftaran'
-		}).then(function() {
-			window.location.href='../halaman-daftar';
-		});
-		</script>";		
+			</script>";		
 		}
-	// } else {
-	// 	echo "<script>
-	// 	Swal.fire({
-	// 		icon: 'error',
-	// 		title: 'Peringatan',
-	// 		text: 'Gagal melakukan proses'
-	// 	}).then(function() {
-	// 		window.location.href='../halaman-daftar';
-	// 	});
-	// 	</script>";
-	// }
-}
+	}
 	?>
 </body>
 </html>

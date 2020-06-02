@@ -31,7 +31,7 @@ include 'koneksi.php'
       <div class="card-body login-card-body">
         <p class="login-box-msg">Mohon untuk memasukkan kode verifikasi dengan benar.</p>
 
-        <form action="Proses/verifikasi-pendaftaran" method="post">
+        <form action="Proses/verifikasi-akun" method="post">
           <div class="input-group mb-3">
             <input type="number" name="kode" id="kode" class="form-control" placeholder="Kode" autocomplete="off" required="">
             <div class="input-group-append">
