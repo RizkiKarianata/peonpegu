@@ -21,7 +21,7 @@
 	$curl = curl_init();
 
 	curl_setopt_array($curl, array(
-		CURLOPT_URL => "https://api.thebigbox.id/sms-otp/1.0.0/otp/kdq53gtlQV2QD00FdzxIN2D0MerZUyDH/verifications",
+		CURLOPT_URL => "https://api.thebigbox.id/sms-otp/1.0.0/otp/ouOmqbFbGRts3k9ErRFbg46G887mpDqO/verifications",
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING => "",
 		CURLOPT_MAXREDIRS => 10,
@@ -31,7 +31,7 @@
 		CURLOPT_POSTFIELDS => "{\n  \"maxAttempt\" : \"3\",\n  \"otpstr\" : \"$kode\",\n  \"expireIn\" : \"300\",\n  \"digit\" : \"5\"\n\n}",
 		CURLOPT_HTTPHEADER => array(
     		"content-type: application/json",
-    		"x-api-key: kdq53gtlQV2QD00FdzxIN2D0MerZUyDH"
+    		"x-api-key: ouOmqbFbGRts3k9ErRFbg46G887mpDqO"
 		),
 	));
 
