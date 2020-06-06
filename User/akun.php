@@ -5,7 +5,6 @@ $id_user = $_COOKIE['version'];
 $query = "SELECT * FROM tb_user WHERE id_user = '$id_user'";
 $exe = mysqli_query($conn, $query);
 $row = mysqli_fetch_array($exe);
-
 $query2 = "SELECT COUNT(*) AS total FROM tb_transaksi WHERE id_user = '$id_user'";
 $exe2 = mysqli_query($conn,$query2);
 $row2 = mysqli_fetch_array($exe2);
@@ -160,7 +159,7 @@ $row2 = mysqli_fetch_array($exe2);
                 }else if ($row3['status'] == 1){
                   echo "<span class='btn-sm btn-success'>Proses</span>";
                 }else if ($row3['status'] == 2){
-                  echo "<a href='Proses/cetak.php' target=_blank><span class='btn-sm btn-success'>Cetak</span></a>";
+                  echo "<a href='Proses/cetak?id=$row3[id_transaksi]' target=_blank><span class='btn-sm btn-success'>Cetak</span></a>";
                 }else {
                   echo "<span class='btn-sm btn-danger'>Gagal</span>";
                 }
