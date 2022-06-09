@@ -2,7 +2,7 @@
 
 ![Peonpegu](https://user-images.githubusercontent.com/52366240/172429300-bd939bd9-134d-4e1f-b3e6-f31d155ca28a.png)
 
-<p align="center">Peonpegu is a PHP micro framework template using the modified Slim Framework. Peonpegu helps you to speed up writing web applications (Code) and simple yet powerful APIs. Built using the Slim Framework. 💖 </p>
+<p align="center">Peonpegu is a simple application that is used to book tickets online without coming to the venue. Built using Native PHP. 💖 </p>
 
 <p align="center">
 <img src="https://img.shields.io/github/contributors/RizkiKarianata/peonpegu?style=flat-square">
